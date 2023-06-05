@@ -19,16 +19,8 @@ on two propositions that are asserted or assumed to be true.
 
 Examples:
 
-$$ 
-\underbrace{\text{All men are mortals. Socrates is a man. }}_{\text{premise}}
-\underbrace{\text{Socrates is a mortal.}}_{\text{conclusion}}
-$$
-
-
-$$ 
-\underbrace{\text{Dogs have feathers. No feathered creature eats pasta. }}_{\text{premise}}
-\underbrace{\text{Dogs do not eat pasta.}}_{\text{conclusion}}
-$$
+- All men are mortals. Socrates is a man. So, Socrates is moral
+- Dogs have feathers. No feathered creature eats pasta. So, dogs do not eat pasta.
 
 ### Euler Diagrams
 
