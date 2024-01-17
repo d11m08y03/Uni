@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\title{Differential Equations: First Order ODE}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{ODEs}
+An ordinary differential equation is an equations involving an unknown
+function and its derivatives. The order of the differential equation
+is the order of the highest derivative. A linear ODE of order $n$ is
+a differential equation written in the form:
+
+
+\begin{equation}
+  a_n(x) \cdot \frac{d^{n}y}{dx^{n}} 
+  + a_{n-1}(x) \cdot \frac{d^{n-1}y}{dx^{n-1}} 
+  + ...
+  + a_1(x) \cdot \frac{dy}{dx} 
+  + a_o(x) \cdot y
+  = f(x)
+\end{equation}
+
+\vspace{1.5ex}
+
+The equation is said to be homogeneous if $f(x) = 0$. Otherwise, it is
+non-homogeneous. The equation is linear when:
+\begin{itemize}
+  \item $y$ and its derivatives are multiplied by a function $x$ or 
+    a constant
+  \item the right hand side is a function of $x$
+\end{itemize}
+
+\subsection{Examples of Differential Equations}
+
+First order, linear and non-homogeneous:
+\begin{gather*}
+  \frac{dy}{dx} = x + y \\[3pt]
+  \frac{dy}{dx} - y = x
+\end{gather*}
+
+Second order, non-linear and homogeneous:
+\begin{gather*}
+  \frac{d^2y}{dx^2} + xy \cdot \frac{dy}{dx} + 3y = 0
+\end{gather*}
+
+First order, non-linear and non-homogeneous:
+\begin{gather*}
+  \frac{d \theta}{dt} + 2t = 0
+\end{gather*}
+
+\section{General Solution of an ODE}
+The general solution of an ODE is the relationship between the dependent
+and the independent variables obtained by integration. A first order
+ODE will involve one constant whilst a second order has two constants.
+
+A particular solution is the solution to an initial value problem (IVP)
+where the constants of integration is found from the initial conditions
+given.
+
+\subsection{Method of Seperation of Variables}
+A differential equation is said to be seperable if:
+\begin{equation*}
+  \frac{dy}{dx} = f(x , y) = a(x) \cdot b(y)
+\end{equation*}
+
+1. Rewrite the equation as:
+\begin{equation*}
+  \frac{dy}{b(y)} = a(x) \cdot dx
+\end{equation*}
+
+2. Integrate on both sides:
+\begin{gather*}
+  \int \frac{dy}{b(y)} = \int a(x) \cdot dx \\[5pt]
+  \text{General solution:} \;B(y) = A(x) + C
+\end{gather*}
+
+\vspace{1ex}
+
+3. If you are given IVP, use the initial conditions to find the particular
+solution.
+
+\subsection{Example 1}
+Find the particular solution of the following ODE given $y(1) = 3$.
+\begin{equation*}
+  \frac{dy}{dx} = \frac{y^2 - 1}{x}
+\end{equation*}
+
+Solution:
+\begin{gather*}
+  \frac{dy}{y^2 - 1} = \frac{dx}{x} \\[5pt]
+  \int \frac{dy}{y^2 - 1} = \int \frac{dx}{x}
+\end{gather*}
+
+\vspace{1ex}
+Using partial fraction to rewrite:
+\begin{gather*}
+  \frac{1}{y^2 - 1} = \frac{1}{2(y - 1)} - \frac{1}{2(y + 1)} \\[6pt]
+  \int (\frac{1}{2(y - 1)} - \frac{1}{2(y + 1)} ) = \int \frac{dx}{x} \\[6pt]
+  \frac{1}{2} \cdot ln(\frac{y - 1}{y + 1}) = ln(x) + C \\[5pt]
+  \text{General Solution:} \; \frac{y - 1}{y + 1} = Bx^2, \; 
+  \text{where } B = ln \hspace{1pt} C \\[5pt]
+  \text{When $x = 1$, $y = 3$,} \implies B = \frac{1}{2} \\[5pt]
+  \therefore y = \frac{2 + x^2}{2 - x ^ 2} \leftarrow 
+  \text{Particular Solution}
+\end{gather*}
+
+\subsection{Example 2}
+\begin{gather*}
+  x(y - 1) \; dx + y(x - 1) \; dy = 0 \\[5pt]
+  x(y - 1) = -dx + y(x - 1) \; dy \\[5pt]
+  \frac{x}{x - 1} \; dx = - \frac{y}{y - 1} \\[5pt]
+  \text{Integrating on both sides:}
+  \int \frac{x}{x - 1} \; dx = \int - \frac{y}{y - 1} \\[5pt]
+  \int 1 + \frac{1}{x - 1} \; dx = - \int 1 + \frac{1}{y - 1} \; dy \\[5pt]
+  x + \ln{(x - 1)} = -[y + \ln{(y - 1)}] + C \\[5pt]
+  x + y = - \ln{[A(x-1)(y - 1)]} \\[5pt]
+  A(x-1)(y-1) = e^{x+y} \leftarrow \text{General Solution}
+\end{gather*}
+ 
+\subsection{Example 3}
+\begin{gather*}
+  \frac{dy}{dx} = x^3(y^2 + 1) \\[5pt]
+  \frac{dy}{y^2 + 1} = x^3 \; dx \\[5pt]
+  \int \frac{dy}{y^2 + 1} = \int x^3 \; dx \\[5pt]
+  \tan^{-1} y = \frac{1}{4} x^4 + C \\[5pt]
+  y = \tan{(\frac{x^4}{4} + C)}
+\end{gather*}
+
+\end{document}
