@@ -6,7 +6,6 @@ struct Matrix {
   size_t rows, cols;
   std::vector<std::vector<int>> arr;
 
-  Matrix() = default;
   Matrix(size_t rows, size_t cols, std::vector<std::vector<int>> arr) : rows(rows), cols(cols), arr(arr) {}
 
   void display() {
