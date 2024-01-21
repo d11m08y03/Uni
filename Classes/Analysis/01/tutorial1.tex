@@ -1,0 +1,127 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{graphicx}
+\graphicspath{ {/home/zakariyya/Downloads/} }
+
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\newcommand{\bbb}{\paragraph{}\mbox{}\\}
+\newcommand{\ex}{\; \exists \;}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\all}{\; \forall \;}
+
+\newcommand{\joe}{2\sqrt{2}}
+\newcommand{\brom}{\sqrt{3+2m}}
+\newcommand{\bron}{\sqrt{3+2n}}
+\newcommand{\rom}{\sqrt{4+3m}}
+\newcommand{\ron}{\sqrt{4+3n}}
+
+\title{Tutorial 1}
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+a. There exists at least one subsequence of $a_n$ that does not converge.\\
+b. $\exists \; x_n \geq 5 \ni x_n \notin S $.\\
+c. $x \notin A \cup B $.\\
+c. $x \notin A \cap B $.\\
+d. $\exists \; x \in (a, b) \ni f(x) < 0$.\\
+e. For all $K \in \real, \ex x \in [-a, a] \ni |f(x) \leq k|$
+
+\section{Question 2}
+\begin{gather*}
+\text{Prove that} \lim_{ n \to \infty } \frac{n}{n+1} = 1.
+\text{ Given } \epsilon > 0, \text{by the Archimedean property of } \real,
+  \ex K \in \nat  \ni \\ \frac{1}{K+1} < \epsilon 
+  \implies \frac{1}{n + 1} \leq
+  \frac{1}{K+1} < \epsilon \all n \geq K 
+  \implies \bigg|\frac{n}{n+1} - 1\bigg| = \bigg|\frac{n}{n+1} - \frac{n+1}{n+1}\bigg|
+  \\[5pt]= \bigg |\frac{1}{n+1} \bigg| = 
+  \frac{1}{n+1} < \epsilon \all n \geq K.
+\end{gather*}
+
+\begin{gather*}
+  \text{Prove that} \lim_{ n \to \infty } \frac{n}{n+2 \sqrt{2} } = 1.
+  \text{ Given } \epsilon > 0, \text{by the Archimedean property of } \real,
+  \ex K \in \nat \ni \\[5pt] \frac{\joe}{K + \joe} < \epsilon \implies 
+  \frac{\joe}{n + \joe} \leq \frac{\joe}{K + \joe} < \epsilon \all n \geq K \implies
+  \bigg| \frac{n}{n + \joe} - 1 \bigg| = \bigg| \frac{\joe}{n + \joe} \bigg| =\\[5pt] 
+  \frac{\joe}{n + \joe} < \epsilon \all n \geq K.
+\end{gather*} 
+
+\section{Question 3}
+\includegraphics[scale=0.5]{kappa}
+
+\section{Question 4}
+\includegraphics[scale=0.5]{kappa}
+
+\section{Question 5}
+Since $(a_n)$ is a null sequence, $\lim_{n \to \infty} a_n = 0 \implies
+$ given $ \epsilon > 0, \ex K \in \nat \ni |a_n - 0| = |a_n| < \epsilon 
+\all n \geq K \implies K |a_n| < K \cdot \epsilon \implies 
+|b_n - l| < K|a_n| < K \cdot \epsilon. $ Yep death.
+
+\section{Question 6}
+\includegraphics[scale=0.5]{kappa}
+
+\section{Question 7 (Sus)}
+
+\subsection{Part 1}
+\begin{gather*}
+  \text{Given } \epsilon > 0, \text{ choose }
+  N \in \nat \ni N \geq \frac{\epsilon^2}{8} - \frac{3}{2}. \text{ Then,}
+  \all m, n > N,\\[5pt] 
+  | \brom - \bron | = | -\bron + \brom | \leq \bron + \brom < \\[5pt]
+  \sqrt{3 + 2 \cdot (\frac{\epsilon^2}{8} - \frac{3}{2})} 
+  + \sqrt{3 + 2 \cdot (\frac{\epsilon^2}{8} - \frac{3}{2})} =
+  \sqrt{3 + \frac{\epsilon^2}{4} - 3} + \sqrt{3 + \frac{\epsilon^2}{4} - 3} = \epsilon \\[5pt]
+  \implies a_n \text{ is a Cauchy sequence } \implies a_n \text{ is bounded.}
+\end{gather*}
+
+\subsection{Part 2}
+\begin{gather*}
+  \text{Let } f(x) = \sqrt{3 + 2x}. \; \; f'(x) = \frac{1}{\sqrt{3 + 2x}}.
+  \text{ Since } a_0 = 0, \;\; \sqrt{3 + 2x} \text{ will always be positive.} \\[5pt]
+  \implies f'(x) \text{ will always be positive } \implies f(x) \text{ is an increasing function. } \\[5pt]
+  \implies a_n \text{ is a monotone increasing sequence by comparison.}
+\end{gather*}
+
+Since $a_n$ is monotone and bounded, it is convergent according to the
+monotone convergence theorem.
+
+\section{Question 8 (Sus)}
+
+\subsection{Part 1}
+\begin{gather*}
+  \text{Given } \epsilon > 0, \text{ choose }
+  N \in \nat \ni N \geq \frac{\epsilon^2}{12} - \frac{4}{3}. \text{ Then,}
+  \all m, n > N,\\[5pt] 
+  | \rom - \ron | = | -\ron + \rom | \leq \ron + \rom < \\[5pt]
+  \sqrt{4 + 3 \cdot (\frac{\epsilon^2}{12} - \frac{4}{3})} 
+  + \sqrt{4 + 3 \cdot (\frac{\epsilon^2}{12} - \frac{4}{3})} =
+  \sqrt{4 + \frac{\epsilon^2}{4} - 4} + \sqrt{4 + \frac{\epsilon^2}{4} - 4} = \epsilon \\[5pt]
+  \implies a_n \text{ is a Cauchy sequence } \implies a_n \text{ is bounded.}
+\end{gather*}
+
+\subsection{Part 2}
+\begin{gather*}
+  \text{Let } f(x) = \sqrt{4 + 3x}. \; \; f'(x) = \frac{1}{\sqrt{4 + 3x}}.
+  \text{ Since } a_0 = 6, \;\; \sqrt{4 + 3x} \text{ will always be positive.} \\[5pt]
+  \implies f'(x) \text{ will always be positive } \implies f(x) \text{ is an increasing function. } \\[5pt]
+  \implies a_n \text{ is a monotone increasing sequence by comparison.}
+\end{gather*}
+
+\end{document}
