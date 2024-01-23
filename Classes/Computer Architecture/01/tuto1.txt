@@ -1,0 +1,52 @@
+Question 1
+  It is software stored on a memory chip on the motherboard. It is the first 
+  software that runs when the computer powers on. It allows the user to do
+  things like: change the boot order, change the date and time, change
+  RAM settings, modify system volatages and many more.
+
+  --> Manages essential devices before the OS is loaded.
+
+Question 2
+  When the PC is powered on, there will usually be a screen that displays
+  the manufacturers logo for a short amount of time before booting. To
+  access the BIOS, a key must be hit while the manufacturer's logo is
+  visible. The key will either be DELETE or F2 but it will depend on the
+  motherboard.
+
+Question 3
+  POST is a system diagnostic process that is carried out by the BIOS
+  right after the computer is powered on. Its main function is to test
+  whether all the components connected to the computer work properly.
+  If there are issues detected, it will notify the user via beep sounds,
+  LED lights or HEX codes.
+
+Question 4
+  BIOS beep codes help with trouble shooting. The motherboard manual
+  will have a catalogue for translating beep sounds into actual error
+  messages which may help solving an issue. For instance, a Beep Code 
+  2 usually indicates that RAM was not detected.
+
+Question 5
+  Overclocking refers to increasing a CPU's clock speeds beyond the 
+  manufacturer's specifications to gain more performance at the cost
+  of higher thermals and lower CPU longetivity. Most people do not need
+  overclocked hardware so, no. Usually people like gamers who need every
+  bit of performance their systems can offer.
+
+Question 6
+  1. VGA 
+  2. S-Video / Seperate Video Connector
+  3. Digital Video Interface(DVI)
+  4. HDMI
+  5. Micro HDMI
+  6. Mini Display Port
+  7. RJ-11
+  8. Audio Ports
+  9. USB-A
+  10. IEEE 1394 Firewire
+  11. PGC
+  12. Esata
+  13. PS/2 
+  14. Serial Port
+  15. Parallel Port
+  16. RJ-45 (Ethernet)
