@@ -1,0 +1,42 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\section{Question 1}
+\begin{itemize}
+  \item First Order, Linear, Non-Homogenous
+  \item First Order, Linear, Homogenous
+  \item Third Order, Non-Linear, Non-Homogenous
+  \item Fourth Order, Non-Linear, Non-Homogenous
+\end{itemize}
+
+\section{Question 2}
+\subsection{(i)}
+\begin{gather*}
+  \cos^2 t \cdot \frac{d \theta }{ dt } + \cos^2 \theta = 0 \implies
+  \frac{d \theta}{\cos^2 \theta} = -\frac{dt}{\cos^2 t} \\[5pt]
+  \int \frac{d \theta}{\cos^2 \theta} = -\int \frac{dt}{\cos^2 t} \implies 
+  \tan \theta = -\tan t + C \\[5pt]
+  \text{When t = } \frac{\pi}{4}, \; \theta = \frac{\pi}{4} \implies C = 2
+\end{gather*}
+
+\subsection{(ii)}
+\begin{gather*}
+  \frac{dy}{dx} + 2x(y + 1) = 0 \implies
+  \frac{dy}{y + 1} = -2x \cdot dx \\[5pt]
+  \int \frac{dy}{y + 1} = -2 \int x \cdot dx \implies
+  \ln |y + 1| = -x^2 + C \\[5pt]
+  y + 1 = e^{-Cx^2} 
+\end{gather*}
+\end{document}
