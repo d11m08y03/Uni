@@ -14,7 +14,7 @@ int binarySearch(int key, std::vector<int> arr) {
 }
 
 int main() {
-  int r = binarySearch(2, {1, 2, 3, 4});
+  int r = binarySearch(2, {1, 2, 3, 4, 5});
   std::clog << r << '\n';
   return 0;
-}
+}       
