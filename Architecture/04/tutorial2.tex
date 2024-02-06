@@ -1,0 +1,89 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{graphicx}
+\graphicspath{ {/home/zakariyya/Downloads/} }
+
+\usepackage{blindtext}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\begin{document}
+\section{Question 1}
+
+\begin{center}
+  \begin{tabular} {|c|c|c|}
+    \hline
+    \textbf{Input} & \textbf{Output} & \textbf{Storage} \\
+    \hline
+    Keyboard & Monitor & SSD \\
+    Mouse & Speaker & HDD \\
+    Touch Screen & Printer & Micro SD \\
+    Controller & Projector & RAM \\
+    Microphone & Speech Synthesizer & ROM \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section{Question 2}
+A Direct Memory Access (DMA) controller allows devices to send and receive
+data from the main memory while allowing the CPU to do other tasks. Through
+the memory bus, the CPU tells the controller the length of the memory chunk
+it is supposed to copy, the device and memory address, the command (read
+or write). While the CPU performs other tasks, the DMA controller performs
+required operations. The CPU and the DMA controller are in competition for 
+the memory bus but since the CPU will find most of its data in the cache,
+it will leave cycles for the DMA controller to use the bus.
+
+\section{Question 2}
+A device driver is a special software that is written for hardware devices.
+They allow software to communicate with hardware. More specifically, they
+allow the OS and applications to work with hardware. They also allow 
+different pieces of hardware to work together. Drivers are needed because
+different pieces of hardware may use different protocols for I/O. Drivers
+can abstract away all of the hardware's details into a streamlined API which
+the OS and applications may use. There are different kinds of drivers: 
+\begin{itemize}
+  \item Kernel device drivers - Drivers for generic devices such as 
+    motherboard and BIOS.
+  \item Original Equiment Manufacturer(OEM) drivers - proprietary drivers
+    installed seperately after installing the OS.
+  \item Virtual device drivers - used to control virtual machines and 
+    emulate hardware of the host device.
+\end{itemize}
+
+\section{Question 4}
+True. Updating drivers can fix issues with certain software.
+For instance, newer applications may
+be using the latest drivers to communicate with hardware. Sticking to an
+older version may lead to compatibility issues. In other cases, driver updates
+leads to performance gains. For examples, the latest drivers for the 
+Intel ARC GPUs yielded a 119 \% performance improvement in DX11 and DX12 games.
+
+\section{Question 5}
+A KVM switch's functions is to control and switch between different PCs
+using a single trifecta of keyboard, monitor and switch. It is useful
+when a user has different PCs for different tasks. For instance, streamers
+who have their main PC and a secondary PC for streaming.
+
+\section{Question 6}
+\begin{itemize}
+  \item Refresh rate - the rate at which the screen is redrawn. 
+  \item Pixel Pitch - the vertical and horizontal distance between individual pixels.
+  \item Resolution - the number of pixels in the display
+  \item Viewing angle - the maximum angular distance from looking in front of a screen
+    to looking from the side without a change in brightness or colors.
+\end{itemize}
+
+\section{Question 7}
+100ms
+
+\section{Question 8}
+
+FAT32 is the 32 bit ver
+
+\end{document}
