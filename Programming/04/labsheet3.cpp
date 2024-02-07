@@ -1,5 +1,8 @@
 #include <cstddef>
 #include <cstdio>
+#include <functional>
+#include <iostream>
+#include <bits/stdc++.h>
 
 // Question 1
 void reseat(int arr[], size_t n) {
@@ -14,25 +17,29 @@ void reseat(int arr[], size_t n) {
 }
 
 // Question 2
-void counter(int arr[], size_t n) {
-  static int low = 0;
-  static int high = n;
+int counter(int arr[], size_t n) {
+  std::function<int(int arr[], int key)> search;
+  search = [&](int arr[], int key) {
+    static int low = 0, high = n; 
+    int middle = low + (high - low) / 2;
+
+    if (low > high) return -1;
+    if (key == arr[middle]) return middle;
+    else if (key < arr[middle]) low = middle + 1;
+    else if (key > arr[middle]) high = middle - 1;
+
+    return search(arr, key);
+  };
+
   static int count = 0;
-  int middle = (low + high) / 2;
+  int foundAt = search(arr, 1);
 
-  if (low >= high) {
-    printf("Count %d\n", count);
-    return;
-  }
+  if (foundAt == -1) return count;
 
-  if (arr[middle] == 1) { 
-    count++;
-    arr[middle] = -1;
-  } else {
-    high = middle - 1;
-  }
-
-  return counter(arr, n); 
+  arr[foundAt] = 0;
+  std::sort(arr, arr + n, std::greater<int>());
+  count++;
+  return counter(arr, n);
 }
 
 // Question 3 
@@ -73,6 +80,7 @@ void pairDiff(int arr[], int n, int num) {
 
 int main() {
   int arr[] = {5, 20, 3, 2, 50, 80};
-  pairDiff(arr, 6, 78);
+  int arr2[] = {1, 1, 1, 1, 0, 0, 0, 0};
+  std::cout << counter(arr2, 7) << std::endl;
   return 0;
 }
