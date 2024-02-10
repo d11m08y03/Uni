@@ -1,0 +1,138 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{blindtext}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\title{Subission of Classwork}
+\author{Zakariyya Kurmally (Student ID: 2315839)}
+
+\begin{document}
+\maketitle
+\begin{gather*}
+  \left[ \begin{array}{ccc}
+    1 & 2 & 3 \\
+    -1 & 1 & 2 \\
+    2 & 1 & 3 \\
+  \end{array} \right] 
+  \left[ \begin{array}{c}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+  \end{array} \right] 
+  = 
+  \left[ \begin{array}{c}
+    6 \\
+    2 \\
+    6 \\
+  \end{array} \right] \\[5pt]
+\end{gather*}
+
+\section{Gaussian Elimination}
+\begin{gather*}
+  [A \; | \; b] = 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    -1 & 1 & 2 & 2\\
+    2 & 1 & 3 & 6\\
+  \end{array} \right] 
+  \overset{R_2 + R_1}{\implies} 
+  %
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    2 & 1 & 3 & 6\\
+  \end{array} \right] 
+  \overset{R_3 - 2R_1}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    0 & -3 & -3 & -6\\
+  \end{array} \right] \\[5pt]
+  \overset{R_3 + R_2}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    0 & 0 & 2 & 2\\
+  \end{array} \right] \implies
+\end{gather*}
+\begin{equation*}
+  \begin{aligned}[c]
+    2x_3 = 2 \\ 
+    x_3 = 1
+  \end{aligned}
+  \qquad
+  \begin{aligned}
+    3x_2 + 5x_3 = 8 \\
+    3x_2 + 5 = 8 \\
+    3x_2 = 3 \\
+    x_2 = 1
+  \end{aligned}
+  \qquad
+  \begin{aligned}
+    x_1 + 2x_2 + 3x_3 = 6 \\
+    x_1 + 2 + 3 = 6 \\
+    x_1 = 1
+  \end{aligned}
+\end{equation*}
+
+\section{Gauss Jordan Method}
+\begin{gather*}
+  [A \; | \; b] = 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    -1 & 1 & 2 & 2\\
+    2 & 1 & 3 & 6\\
+  \end{array} \right] 
+  \overset{R_2 + R_1}{\implies} 
+  %
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    2 & 1 & 3 & 6\\
+  \end{array} \right] 
+  \overset{R_3 - 2R_1}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    0 & -3 & -3 & -6\\
+  \end{array} \right] \\[5pt]
+  \overset{R_3 + R_2}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 5 & 8\\
+    0 & 0 & 2 & 2\\
+  \end{array} \right]
+  \overset{R_2 - \frac{5}{2}R_3}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 3 & 6\\
+    0 & 3 & 0 & 3\\
+    0 & 0 & 2 & 2\\
+  \end{array} \right]
+  \overset{R_1 - \frac{3}{2}R_3}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 2 & 0 & 3\\
+    0 & 3 & 0 & 3\\
+    0 & 0 & 2 & 2\\
+  \end{array} \right] \\[5pt]
+  \overset{R_1 - \frac{2}{3}R_2}{\implies} 
+  \left[ \begin{array}{ccc|c}
+    1 & 0 & 0 & 1\\
+    0 & 3 & 0 & 3\\
+    0 & 0 & 2 & 2\\
+  \end{array} \right] \implies
+  \left[ \begin{array}{ccc|c}
+    1 & 0 & 0 & 1\\
+    0 & 1 & 0 & 1\\
+    0 & 0 & 1 & 1\\
+  \end{array} \right] \implies
+  x_1 = 1, \; x_2 = 1, \; x_3 = 1
+\end{gather*}
+\end{document}
