@@ -1,0 +1,14 @@
+You are required to (1) lay out your respective requirements, (2)
+investigate all components of the PC, (3) select your motherboard,
+and (4) label the main components on the motherboard. All the
+selected components/parts should be “compatible” with the chosen
+motherboard.
+You also need to select an OS for your PC based on your
+requirements that justifies any cost associated with the OS. Compare
+and contrast with open source alternatives.
+
+Requirements
+- Coding
+- Hardware with Linux Support 
+- Quiet
+
