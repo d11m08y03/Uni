@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <functional>
-#include <iostream>
+#include <utility>
 
 // Exercise 1
 int pgcd(int a, int b) {
@@ -18,21 +18,29 @@ int sum(int n, int x) {
 }
 
 // Exercise 3
-// typedef std::pair<double, double> Angles;
-// Angles trigo(int n, Angles angles) {
-//   if (n == 1)
-//     return angles;
+typedef std::pair<double, double> Angles;
+Angles trigo(int n, Angles angles) {
+  if (n == 1) return angles;
+  if (n == 0) return std::make_pair(1.0, 0.0);
 
-//   if (n == 0)
-//     return std::make_pair(0.0, 0.0);
-// }
+  Angles temp = trigo(n - 1, angles);
+  return std::make_pair(
+    temp.first * angles.first - angles.second * temp.second,
+    temp.second * angles.first + angles.second * temp.first
+  );
+}
 
 int main() {
-  int num1 = 5, num2 = 6;
-  std::clog << "GCD of " << num1 << " and " << num2 << ":" << pgcd(num1, num2) << std::endl;
+  // Angles 180
+  Angles testCase1 = std::make_pair(-1.0, 0);
+  Angles testCase2 = std::make_pair(0.866, 0.5);
 
-  int n = 3, x = 4;
-  printf("S(%d, %d) = %d\n", n, x, sum(n, x));
+  Angles result0 = trigo(0, testCase1);
+  printf("Called with 0: %f, %f\n", result0.first, result0.second);
+  Angles result1 = trigo(1, testCase1);
+  printf("Called with 1: %f, %f\n", result1.first, result1.second);
+  Angles result2 = trigo(9, testCase2);
+  printf("Called with 9: %f, %f\n", result2.first, result2.second);
 
   return 0;
 }
