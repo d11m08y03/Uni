@@ -7,7 +7,7 @@ struct Matrix {
   std::vector<std::vector<int>> arr;
 
   Matrix(size_t rows, size_t cols, std::vector<std::vector<int>> arr)
-      : rows(rows), cols(cols), arr(arr) {}
+    : rows(rows), cols(cols), arr(arr) {}
 
   void display() {
     for (size_t i = 0; i < this->rows; i++) {
