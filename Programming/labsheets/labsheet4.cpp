@@ -64,6 +64,7 @@ void selection(int arr[], size_t n) {
   }
 }
 
+// Exercise 5 - Recursive selection sort
 void recursiveSelection(int arr[], int n) {
   if (n <= 1) return;
 
