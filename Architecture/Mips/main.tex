@@ -2,13 +2,33 @@
 
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,      
+  urlcolor=cyan,
+  pdftitle={Overleaf Example},
+  pdfpagemode=FullScreen,
+}
 
 \title{MIPS Assembly Assignment}
-\author{Zakariyya Kurmally}
+
+\author{
+  Zakariyya Kurmally \\
+  \texttt{2315839}
+  \and
+  Ihsaan Ramjanee \\
+  \texttt{2315007}
+}
 
 \begin{document}
 
 \maketitle
+
+\pagebreak
+
+\tableofcontents
 
 \pagebreak
 
@@ -34,7 +54,7 @@ program.
   \includegraphics[scale = 0.25]{amen.png}
 \end{center}
 
-\section{Text Section}
+\subsection{Text Section}
 \paragraph{}
 We first initialised the pointer and counter variables:
 
@@ -77,7 +97,7 @@ smolprintf subprogram before exiting the program.
   \includegraphics[scale = 0.25]{exitaaaaaaaaa.png}
 \end{center}
 
-Below is the subprogram resposible for printing the aforementioned
+Below is the subprogram responsible for printing the aforementioned
 values. It uses the \$a0 and \$a1 registers as parameters which store
 the message and value to output respectively.
 
@@ -87,6 +107,24 @@ the message and value to output respectively.
 
 \section{Subprograms}
 The smolprintf subprogram helped to significantly reduce the number
-of lines of code.
+of lines of code. Before, to output a single line, the following was
+required:
+
+\begin{center}
+  \includegraphics[scale = 0.25]{before.png}
+\end{center}
+
+The subprogram smolprintf helps to significantly reduce this by
+about half:
+
+\begin{center}
+  \includegraphics[scale = 0.25]{after.png}
+\end{center}
+
+\section{Learning resources used}
+\href{https://courses.missouristate.edu/kenvollmar/mars/help/syscallhelp.html}{MIPS Syscall table} 
+- Syscall reference table \\
+\href{https://www.youtube.com/watch?v=5AN4Fo0GiBI&t=525s}{Intro to MIPS} -
+Explanation of registers and hello world program
 
 \end{document}
