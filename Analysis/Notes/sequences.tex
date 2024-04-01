@@ -1,0 +1,196 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\newcommand{\bbb}{\paragraph{}\mbox{}\\}
+\newcommand{\ex}{\; \exists \;}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\all}{\; \forall \;}
+
+\title{El Recap De Comer}
+
+\begin{document}
+\maketitle
+
+\section{Real Numbers}
+
+\subsection{Completeness}
+Completeness is a property of $\mathbb{R}$ that implies that there are no
+"gaps" in the real number line. It states that every non-empty set of 
+$\real$ that is bounded has a supremum and an infimum in $\real$. 
+
+\subsection{Archimedean Property of $\real$}
+It states that $\forall \; \epsilon > 0, \ex n \in \nat \ni \frac{1}{n}
+< \epsilon$.
+This means that there are no infinitesimally small elements in the real
+line, no matter how small $\epsilon$ gets, we will always be able to find
+an even smaller positive real number in the form $\frac{1}{n}$.
+
+\subsection{Boundedness}
+A set of real numbors is said to be \textbf{bounded} if it it bounded
+above and below. A subset $S$ of $\real$ is said to be bounded $\iff
+|s| < \alpha \all s \in S \implies -\alpha < s < \alpha \all s \in S$.
+
+\subsection{Infimum and Supremum}
+Let $S$ be a subset of $\mathbb{R}$. $S$ is said to be \textbf{bounded above}
+if there is a real number $\alpha \ni \alpha \geq s \; \forall \; s \in S$.
+Such a number $\alpha$ is called an \textbf{upperbound} of $S$.
+$S$ is \textbf{bounded below} if $\exists \; \beta \in \mathbb{R} \ni \beta
+\leq s \; \forall \; s \in S$. $\beta$ is called a \textbf{lowerbound} of
+set $S$. \\
+
+$\alpha$ is the \textbf{least upperbound / supremum} of $S \iff$:
+\begin{itemize}
+  \item $\alpha \geq s \; \forall \; s \in S$
+  \item given $\epsilon > 0 \ex s \in S \ni \alpha - \epsilon < s$ 
+\end{itemize}
+
+$\beta$ is the \textbf{greatest upperbound / infinum} of $S \Longleftrightarrow$:
+\begin{itemize}
+  \item $\beta \leq s \; \forall \; s \in S$
+  \item given $\epsilon > 0 \ex s \in S \ni \beta + \epsilon > s$ 
+\end{itemize}
+
+\section{Sequences}
+
+\subsection{Limits And Convergence}
+Consider an infinite sequence $(a_n) = a_1, a_2, a_3, ...$ of real numbers.
+% If there is a real number $l$ with the property that, given any degree of
+% closeness to $l$ there is a point in the sequence after which all terms
+% are within that degree of closeness, we say that the sequence \textbf{converges}
+% to the \textbf{limit} $l$. Thus, $ \lim_{n\to\infty} (a_n) = l$
+The sequence is said to converge if $ \exists \; L \in \real \ni $ for any given
+$ \epsilon > 0 \ex K \in \real \ni |x_n - L| < \epsilon \all n \geq K$. In
+this case, we say that $(x_n)$ has limit $L$ and we write:
+\begin{gather*}
+  \lim_{n \to \infty} x_n = L
+\end{gather*}
+
+\subsection{Example}
+Using the definition of the limit of a sequence, prove that 
+$\lim_{n \to \infty} (1/n)= 0$. \\
+
+\textbf{Proof:} Given $e > 0$, by the Archimedean property of $\real,
+\ex K \in \nat \ni 1/K < \epsilon.$ Then, if $n \geq K$, then $1/n \leq
+1/K < \epsilon \implies |x_n - 0| = |1/n - 0| = 1/n \leq 1/K < \epsilon$.
+This proves, by definition, that $\lim_{n \to \infty} \frac{1}{n} = 0$.
+
+\subsection{Propositions}
+\begin{itemize}
+  \item Every convergent sequence is bounded. Thus, if $(a_n)$ is convergent
+    then $\exists \; \alpha \in \real \ni |a_n| < \alpha \all n$.
+
+  \item Suppose $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty}
+    b_n = b$. Then:
+    \begin{gather*}
+      \lim_{n \to \infty} (a_n + b_n) = a + b \\[2pt]
+      \all k \in \real, \lim_{n \to \infty} (k \cdot a_n) = k \cdot a \\[2pt]
+      \lim_{n \to \infty} (a_n \cdot b_n) = ab \\[2pt]
+      \text{if } b \ne 0, \lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b} 
+    \end{gather*}
+
+  \item Let $(a_n), (b_n)$ and $(c_n)$ be sequences satisfying
+    $(a_n) \leq (b_n) \leq (c_n) \all n > k$, where k is some fixed 
+    positive integer. If $(a_n)$ and $(c_n)$ both converge to the same
+    limit $l$, then $(b_n)$ also converges to $l$.
+
+  \item A sequence $(a_n)$ is said to \textbf{tend to infinity} [$(a_n) \to \infty$]
+    if given $K \in \real, \ex N \in \nat \ni n \geq N \implies a_n > K$.
+
+  \item The sequence $(a_n)$ is said to \textbf{tend to minus infinity} 
+    [$(a_n) \to -\infty$]
+    if given $K \in \real, \ex N \in \nat \ni n \geq N \implies a_n < K$.
+\end{itemize}
+
+\subsection{Monotonic Sequences}
+Let $(x_n)$ be a sequence of real number. We say that:
+\begin{itemize}
+  \item $(x_n)$ is monotonic increasing if $x_{n+1} \geq x_n \all n \in \nat$.
+  \item $(x_n)$ is monotonic strictly increasing if 
+    $x_{n+1} > x_n \all n \in \nat$.
+  \item $(x_n)$ is monotonic decreasing if $x_{n+1} \leq x_n \all n \in \nat$.
+  \item $(x_n)$ is monotonic strictly decreasing if $x_{n+1} < x_n \all n \in \nat$.
+\end{itemize}
+
+\subsection{Monotone convergence theorem}
+If $(x_n)$ is bounded and monotone then:
+\begin{itemize}
+  \item if it is bounded above and increasing: 
+    \begin{gather*}
+      \lim_{n \to \infty} x_n = Sup(x_n)
+  \end{gather*}
+  \item if it is bounded below and decreasing: 
+    \begin{gather*}
+      \lim_{n \to \infty} x_n = Inf(x_n)
+    \end{gather*}
+\end{itemize}
+
+\textbf{Proof:} Suppose that $(x_n)$ is bounded above and increasing. 
+By the completeness property of $\real$, $Sup(x_n)$ exists. Let $\alpha = Sup(x_n)$
+and $\epsilon > 0$ be arbitrary. Then, by the properties of the supremum,
+$\exists \; x_K \ni \alpha - \epsilon < x_K \leq \alpha$. Since $(x_n)$
+is increasing and $\alpha$ is an upperbound for the range of the sequence,
+it follows that $x_K \leq x_n \leq \alpha \all n \geq K \implies
+\alpha - \epsilon < x_n < \alpha + \epsilon \all n \geq K \implies 
+-\epsilon < x_n - \alpha < \epsilon \implies |x_n - \alpha| < \epsilon
+\all n \geq K$.\\
+
+If $(x_n)$ is not bounded and monotone then:
+\begin{itemize}
+  \item if it is increasing, then $(x_n) \to \infty$.
+  \item if it is decreasing, then $(x_n) \to -\infty$.
+\end{itemize}
+
+\subsection{Subsequences}
+Let $(x_n)$ be a sequence. A subsequence of $(x_n)$ is a sequence of the
+form $(x_{n_1}, x_{n_2}, x_{n_3}, ...)$ where $n_1 < n_2 < n_3 < ...$ is
+a sequence of strictly increasing natural numbers. A subsequence of $(x_n)$
+will be denoted by $(x_{n_k})$.
+
+\subsection{Theorems}
+Let $(x_n)$ be a sequence.
+\begin{itemize}
+  \item if $(x_n) \to L$ then $(x_{n_k}) \to L$.
+  \item if $(x_n)$ has two subsequences converging to distinct limits,
+    $(x_n)$ is divergent.
+  \item if $(x_n)$ has a subsequence that diverges, then $(x_n)$ is divergent.
+  \item if $(x_n)$ is bounded, then $(x_{n_k})$ is also bounded.
+  \item if $(x_n)$ is monotonic increasing, then $(x_{n_k})$ is also monotonic
+    increasing.
+\end{itemize}
+
+\subsection{Bolzano - Weierstrass theorem}
+It states that every bounded sequence has a convergent subsequence.
+\textbf{Proof: } Let $(a_n)$ be a bounded sequence. Say $(a_{n_k})$ is a
+monotone subsequence. Since all the terms of $(a_n)$ are bounded, 
+$a_{n_k}$ is also bounded. By the Monotone Convergence Theorem, the
+subsequence $a_{n_k}$
+
+\subsection{Cauchy Sequences}
+A sequence $ a_n $ is cauchy if $ \all \epsilon > 0 \ex N \in \nat
+\ni |a_m - a_n| < \epsilon \all m, \; n > N$. A sequence converges $ \iff $
+it is Cauchy.
+
+\subsection{Example}
+Prove $a_n = \frac{1}{n}$ is Cauchy. \textbf{Proof: } 
+
+\begin{gather*}
+  \text{Given } \epsilon > 0, \text{by the Archimedean property of } 
+  \real, \ex N \in \nat \ni N > \frac{2}{\epsilon} \implies \frac{1}{N}
+  < \frac{\epsilon}{2}. \text{ Then, } \\ \all m, n > N, 
+  |a_m - a_n| = |\frac{1}{m} - \frac{1}{n}| = |\frac{1}{m} -  + \frac{1}{n}| 
+  \leq |\frac{1}{m}| + |\frac{-1}{n}| = \frac{1}{m} + \frac{1}{n} < 
+ \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{gather*}
+
+\end{document}

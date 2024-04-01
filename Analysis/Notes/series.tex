@@ -1,0 +1,119 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+\newcommand{\bbb}{\paragraph{}\mbox{}\\}
+\newcommand{\ex}{\; \exists \;}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\all}{\; \forall \;}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\san}{\sum_{n = 1}^{\infty} a_n}
+\newcommand{\sbn}{\sum_{n = 1}^{\infty} b_n}
+
+\begin{document}
+
+\section{Series}
+
+Given an infinite series:
+\begin{gather*}
+  \sum_{k = 1}^{\infty} a_k
+\end{gather*}
+
+\begin{itemize}
+  \item the numbers $a_k$ are the terms of that series
+
+  \item the sequence of partial sums is the sequence: 
+    \begin{gather*}
+      (S_n) = \lp \sum_{k = 1}^{n} a_k \rp_{n = 1}^{\infty}
+      = a_1 + a_2 + a_3 + ... + a_n \\[5pt]
+      \text{The series converges to } L \in \real, \text{ written }
+      \sum_{k = 1}^{\infty} a_k = L, \text{ if } (S_n) \rightarrow L,
+      \text{and diverges} \\[5pt]
+      \text{(to $ \infty, -\infty $ or}
+      \text { does not exist) if $(S_n)$ does. Likewise, we say the
+      series is bounded or} \\[5pt]
+      \text{monotone if $S_n$ is.} 
+    \end{gather*}
+\end{itemize}
+
+\section{Geometric Series}
+A geometric series can be written in the form:
+\begin{gather*}
+  \sum_{n = 1}^{\infty} a \cdot r^n = a + ar + ar^2 + ...
+\end{gather*}
+Its partial sum, $S_n$ can be written as:
+\begin{gather*}
+  S_n = \frac{a(1 - r^n)}{1 - r} \implies
+  \lim_{n \to \infty} S_n = \frac{a}{1 - r}
+\end{gather*}
+
+A geometric series will always converge if $|r| < 1$.
+
+% TODO: Telescopic Series %
+
+\section{Harmonic Series}
+A harmonic series can be written in the form:
+\begin{gather*}
+  \sum_{k = 1}^{\infty} \frac{1}{K} = 1 + \frac{1}{2} + \frac{1}{3} + ...
+\end{gather*}
+This series diverges.
+
+\section{P-Series}
+If p is a real constant, a p-series can be written in the form:
+\begin{gather*}
+  \sum_{n = 1}^{\infty} \frac{1}{n^p} = \frac{1}{1^p} + \frac{1}{2^p} + ...
+\end{gather*}
+
+A p-series converges if $p > 1$ and diverges if $p \leq 1$.
+
+\section{The N-th Term Test}
+\begin{flalign*}
+  & \text{If} \lim_{n \to \infty} a_n \neq 0
+  \text{ then } \sum_{n = 1}^{\infty} a_n \text{ diverges. }
+  \text{As such, if } \sum_{n = 1}^{\infty} a_n \text{ converges, }
+  \lim_{n \to \infty} a_n = 0
+\end{flalign*}
+
+This test only guarantees that a series diverges if the terms do not
+go to 0 in the limit. It cannot prove convergence.
+
+\section{Comparison Test For Convergence}
+\begin{gather*}
+  \text{Given } \sum_{n = 1}^{\infty} a_n \text{ and }
+  \sum_{n = 1}^{\infty} b_n \text{. Then if } a_n, \; b_n \geq 0, \;
+  a_n \leq b_n \all n \text{ and } \sum_{n = 1}^{\infty} b_n 
+  \text{ converges, then } \\[5pt]
+  \sum_{n = 1}^{\infty} a_n \text{ converges. Similarly, if }
+  \sum_{n = 1}^{\infty} b_n  \text{ diverges, then }
+  \sum_{n = 1}^{\infty} a_n \text{ diverges.}
+\end{gather*}
+
+\section{Limit Comparison Test}
+\begin{gather*}
+  \text{Given } \san \text{ and } \sbn, \text{ then, if } a_n,
+  \; b_n > 0 \all n > 0 \text{ and } \lim_{n \to \infty} \frac{a_n}{b_n}
+  \text{ is positive and finite, then } \\[5pt]
+  \san \text{ and } \sbn \text{ are either both convergent or divergent.}
+\end{gather*}
+
+\section{The Ratio Test}
+\begin{gather*}
+  \text{Given } \san. \text{ If } \lim_{n \to \infty} 
+  \frac{a_{n + 1}}{a_n} = L, \text{ then the series}: \\[5pt] 
+  i. \text{ converges if } L < 1 \\[5pt]
+  ii. \text{ diverges if } L > 1 \\[5pt]
+  iii. \text{ may or may not converge if } L = 1
+\end{gather*}
+
+\end{document}
