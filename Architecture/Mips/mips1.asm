@@ -2,7 +2,8 @@
 	prompt: .asciiz "Enter number (-69 to finish): "
 	newline: .asciiz "\n"
 	maxNumbers: .word 10
-	maximum: .word 0
+  # Smallest signed 32-bit integer
+	maximum: .word -2147483647
   # Biggest signed 32-bit integer
 	minimum: .word 2147483647
 	sum: .word 0
