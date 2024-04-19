@@ -90,6 +90,7 @@ of success $ p $. If $ Y $ is the number of successes, it is said
 to follow a binomial distribution with parameters $ n $ and $ p $
 denoted by:
 
+
 % TODO NBD mean and variance in R generated not in data set
 
 \begin{gather*}
@@ -101,6 +102,20 @@ Bernoulli trials. However, they differ in what they are counting.
 The BD counts the number of succeses in a fixed number of 
 trials $ n $ while the NBD counts the number of failures until
 a fixed number of successes $ r $.
+
+\subsection{Relationship between Geometric Distribution (BD) and NBD}
+Consider a sequence of Bernoulli trials, each with the same probability 
+of success. If Z is the number of failures before the first successful 
+trial,then Z is said to follow a geometric distribution(GD) with parameter 
+p representing probability of success. This is denoted by:
+
+\begin{gather*}
+  Z \sim Geo(p)
+\end{gather*}
+When comparing a GD with a NBD,it becomes apparent that the NBD generalizes 
+a GD where instead of waiting for just the first success,we can wait for 
+any predetermined number r of successes.In other words,A GD is a special
+case of NBD where r is equal to 1.
 
 \subsection{Illustration of NBD}
 To illustrate, we will use data from Statistics Mauritius pertaining
@@ -145,12 +160,12 @@ Since $ E(X) < Var(X) $, the NBD can be applied. \\
 
 \textbf{Scenario:} Consider an event
 where A-Level economics students are gathered. The event organiser
-wants a group of 5 students who obtained credit and starts 
-approaching attendees about their grades one by one
+wants a group of 5 students who obtained a credit and starts 
+approaching the attendees about their grades one by one
 . Let the random variable
 $ X $ represent the number of students approached
 who have not got a credit until the organiser
-has achieved his goal.
+is able to achieve his goal. \\
 
 % From this, the
 % following NBD can be constructed:
@@ -159,7 +174,8 @@ has achieved his goal.
 %   X \sim \text{NBin}(3, 0.0279)
 % \end{gather*}
 
-Using the rnbinom function in R outputs the following data:
+Using the rnbinom function in R we have generated the following
+data for our distribution:
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -173,10 +189,14 @@ Using the rnbinom function in R outputs the following data:
 
 
 \begin{center}
-  \includegraphics[scale=0.6]{cock.jpg}
+  \includegraphics[scale=0.6]{joemama.jpg}
 \end{center}
 
 \subsubsection{Issues with this application}
+% only suitable for 2023
+Since the data set originally pertains to students sitting for
+the exams in 2023, it cannot be used for any other application
+except for scenarios concerning that batch of students specifically.
 
 \section{Hypergeometric Distribution (HD)}
 Consider a population of $N$ objects which are divided into 2 types: type A and type B.
@@ -246,10 +266,17 @@ function in R, called with:
 \end{center}
 
 \begin{center}
-  \includegraphics[scale=0.6]{cooked.jpg}
+  \includegraphics[scale=0.6]{lecooked2.jpg}
 \end{center}
 
-\section{Goodness of Fit}
+\subsection{Relationship between HD and BD}
+A BD is not suitable for the random variable X as the Bernouilli trials
+(where a “success” is represented by Type A) are dependent 
+(since sampling is done without replacement).However if the sample 
+size is small enough (< 5 \% of population size),the BD can be used 
+to provide a reasonable approximation for a HD.
+
+\section{Goodness of Fit Test}
 
 \subsection{NBD}
 
@@ -258,8 +285,10 @@ Based on the sampled data, the mean and variance can be calculated:
 \begin{gather*}
   \mu = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
   \sigma^2 = \frac{(x_i - \mu)^2}{n - 1} = 5.46 \\[5pt]
-  \therefore \text{mean < variance}
 \end{gather*}
+
+Since mean < variance, the data does satisfy the conditions for
+a NBD.
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -288,10 +317,11 @@ Based on the sampled data, the mean and variance can be calculated:
 
 \begin{gather*}
   x^2 = \sum \frac{(O_i - E_i)^2}{E_i} = 15.2882 \\[5pt]
-  x^2_{ll} (0.05) = 19.675 \\[5pt]
+  x^2_{11} (0.05) = 19.675 \\[5pt]
 \end{gather*}
 
-Since $ x^2 < x^2_{ll}(0.05) $, assuming a 5\% significane level,
+Since $ x^2 < x^2_{11}(0.05) $, assuming a 5\% significane level,
+there is statistical evidence that
 the random variable $ X $ does in fact follow a negative binomial
 distribution.
 
@@ -324,7 +354,10 @@ distribution.
   x^2_9(0.05) = 16.919
 \end{gather*}
 
-Since $ x^2 < x^2_9(0.05) $ the random variable X does 
+Since $ x^2 < x^2_9(0.05) $,
+assuming a 5\% significance level,
+there is statistical evidence that
+the random variable X does 
 follow a hypergeometric distribution.
 
 \end{document}
