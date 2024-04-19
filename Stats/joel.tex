@@ -50,7 +50,7 @@ and $ p $, denoted by:
 Note:
 \begin{itemize}
   \item Mean is always greater than variance for a NBD. This is 
-    known as overdispersion
+    known as over-dispersion
   \item A random variable D which follows a NBD can also be defined
     as the number of trials until the $ r^{th} $ success. In such a
     case, $ D = (X + r) $
@@ -99,7 +99,7 @@ denoted by:
 
 Upon comparison, both the BD and NBD are based upon independent 
 Bernoulli trials. However, they differ in what they are counting.
-The BD counts the number of succeses in a fixed number of 
+The BD counts the number of successes in a fixed number of 
 trials $ n $ while the NBD counts the number of failures until
 a fixed number of successes $ r $.
 
@@ -140,10 +140,11 @@ variance.
   \end{tabular}
 \end{center}
 
-From the above data, mean and variance can be calculated as follows:
+From the above data, we can calculate the probability that
+a random student has obtained a credit:
+
 \begin{gather*}
-  E(X) = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
-  Var(X) = \frac{(x_i - \mu)^2}{n - 1} = 5.46 
+  P(credit) = \frac{1703}{2688} = 0.6338
 \end{gather*}
 
 Since $ E(X) < Var(X) $, the NBD can be applied. \\
@@ -165,7 +166,10 @@ approaching the attendees about their grades one by one
 . Let the random variable
 $ X $ represent the number of students approached
 who have not got a credit until the organiser
-is able to achieve his goal. \\
+is able to achieve his goal.  \\
+
+Note: probability that a student obtains a credit is 0.6336.
+\\
 
 % From this, the
 % following NBD can be constructed:
@@ -195,92 +199,11 @@ data for our distribution:
 \subsubsection{Issues with this application}
 % only suitable for 2023
 Since the data set originally pertains to students sitting for
-the exams in 2023, it cannot be used for any other application
+the exams in 2023, it may not be suitable for any other application
 except for scenarios concerning that batch of students specifically.
 
-\section{Hypergeometric Distribution (HD)}
-Consider a population of $N$ objects which are divided into 2 types: type A and type B.
-There are
-$n$ objects of type $A$ and $N$ - $n$ objects of type $B$.
-Suppose a random sample of size $r$ is taken
-(without replacement) from the entire population of $N$ objects. If $X$ 
-is the number of objects of
-type $A$ in the sample,then $X$ follows a HD with parameters $n$, 
-$N-n$ and r denoted by:
 
-\begin{gather*}
-  X \sim \text{HGeom}(n, N-n, r)
-\end{gather*}
-
-\subsection{Probability Mass Function of HD}
-
-\begin{gather*}
-  p(k) =  \frac{\Mycomb[n]{k} \cdot \Mycomb[(N-n)]{(r-k)}}
-  {\Mycomb[N]{r}}, \; \;
-  \text{for } max\{ 0, r - (N - n) \} \leq k \leq min\{r, n\}
-\end{gather*}
-
-\subsection{Expected Value and Variance of HD}
-\begin{gather*}
-  E(X) = \frac{nr}{N} \\[5pt]
-  Var(X) = \frac{nr}{N} \cdot \frac{N -r}{N} \cdot \frac{N-n}{N-1}
-\end{gather*}
-
-\subsection{Assumptions of a HD}
-\begin{itemize}
-  \item Finite population
-  \item Population can be seperated into 2 types
-  \item Sampling is done without replacement (dependent trials).
-\end{itemize}
-
-\subsection{Illustration of a HD}
-Here, we will use data from MES concerning the number of students
-who sat for the A-Level exams in 2023 in Rodrigues. The following
-table shows amount of students classified by gender:
-
-\begin{center}
-  \begin{tabular}{|c|c|c|}
-    \hline
-    \textbf{Male} & \textbf{Female} & \textbf{Total} \\
-    \hline
-    \hline
-    94 & 150 & 244 \\
-    \hline
-  \end{tabular}
-\end{center}
-
-% Let $ X $ be a random variable denoting the number of boys
-% in a sample of 30 students.
-
-After this, the following data was generated using the rhyper
-function in R, called with:
-
-\begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-    \hline
-    x & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 17 \\
-    \hline
-    f & 1 & 1 & 3 & 6 & 5 & 4 & 4 & 3 & 2 & 1 \\
-    \hline
-  \end{tabular}
-\end{center}
-
-\begin{center}
-  \includegraphics[scale=0.6]{lecooked2.jpg}
-\end{center}
-
-\subsection{Relationship between HD and BD}
-A BD is not suitable for the random variable X as the Bernouilli trials
-(where a “success” is represented by Type A) are dependent 
-(since sampling is done without replacement).However if the sample 
-size is small enough (< 5 \% of population size),the BD can be used 
-to provide a reasonable approximation for a HD.
-
-\section{Goodness of Fit Test}
-The Chi squared test is used to measure how expectations translate 
-to actual observed data. We will use this test to illustrate
-
-\subsection{NBD}
+\subsection{Goodess of fit test for NBD}
 
 Based on the sampled data, the mean and variance can be calculated:
 
@@ -322,12 +245,90 @@ a NBD.
   x^2_{11} (0.05) = 19.675 \\[5pt]
 \end{gather*}
 
-Since $ x^2 < x^2_{11}(0.05) $, assuming a 5\% significane level,
+Since $ x^2 < x^2_{11}(0.05) $, assuming a 5\% significance level,
 there is statistical evidence that
 the random variable $ X $ does in fact follow a negative binomial
 distribution.
 
-\subsection{HD}
+\section{Hypergeometric Distribution (HD)}
+Consider a population of $N$ objects which are divided into 2 types: type A and type B.
+There are
+$n$ objects of type $A$ and $N$ - $n$ objects of type $B$.
+Suppose a random sample of size $r$ is taken
+(without replacement) from the entire population of $N$ objects. If $X$ 
+is the number of objects of
+type $A$ in the sample,then $X$ follows a HD with parameters $n$, 
+$N-n$ and r denoted by:
+
+\begin{gather*}
+  X \sim \text{HGeom}(n, N-n, r)
+\end{gather*}
+
+\subsection{Probability Mass Function of HD}
+
+\begin{gather*}
+  p(k) =  \frac{\Mycomb[n]{k} \cdot \Mycomb[(N-n)]{(r-k)}}
+  {\Mycomb[N]{r}}, \; \;
+  \text{for } max\{ 0, r - (N - n) \} \leq k \leq min\{r, n\}
+\end{gather*}
+
+\subsection{Expected Value and Variance of HD}
+\begin{gather*}
+  E(X) = \frac{nr}{N} \\[5pt]
+  Var(X) = \frac{nr}{N} \cdot \frac{N -r}{N} \cdot \frac{N-n}{N-1}
+\end{gather*}
+
+\subsection{Assumptions of a HD}
+\begin{itemize}
+  \item Finite population
+  \item Population can be separated into 2 types
+  \item Sampling is done without replacement (dependent trials).
+\end{itemize}
+
+\subsection{Illustration of a HD}
+Here, we will use data from MES concerning the number of students
+who sat for the A-Level exams in 2023 in Rodrigues. The following
+table shows amount of students classified by gender:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Male} & \textbf{Female} & \textbf{Total} \\
+    \hline
+    \hline
+    94 & 150 & 244 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+% Let $ X $ be a random variable denoting the number of boys
+% in a sample of 30 students.
+
+After this, the following data was generated using the rhyper
+function in R, called with:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    x & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 17 \\
+    \hline
+    f & 1 & 1 & 3 & 6 & 5 & 4 & 4 & 3 & 2 & 1 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  \includegraphics[scale=0.6]{lecooked2.jpg}
+\end{center}
+
+\subsection{Relationship between HD and BD}
+A BD is not suitable for the random variable X as the Bernoulli trials
+(where a “success” is represented by Type A) are dependent 
+(since sampling is done without replacement).However if the sample 
+size is small enough (< 5 \% of population size),the BD can be used 
+to provide a reasonable approximation for a HD.
+
+\subsection{Goodness of Fit Test for HD}
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
   \hline
