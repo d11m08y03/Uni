@@ -12,7 +12,7 @@
 
 \author{
   Vishanraj Daby \\
-  \texttt{Gay}
+  \texttt{2314620}
   \and
   Ihsaan Ramjanee \\
   \texttt{2315007}
@@ -34,7 +34,7 @@
 \pagebreak
 
 \section{Negative Binomial Distribution (NBD)}
-A Bernoulli trial is an experiment that can result is either a
+A Bernoulli trial is an experiment that can result in either a
 'success' or a 'failure', but not both. \\
 
 Consider a sequence of Bernoulli trials with probability of success
@@ -50,16 +50,17 @@ and $ p $, denoted by:
 Note:
 \begin{itemize}
   \item Mean is always greater than variance for a NBD. This is 
-    known as dispersion
-  \item A random variable D which follows a NBD can alsp be defined
-    as the number of trials before the $ r^{th} $ success. In such a
+    known as overdispersion
+  \item A random variable D which follows a NBD can also be defined
+    as the number of trials until the $ r^{th} $ success. In such a
     case, $ D = (X + r) $
   \item The terms 'success' and 'failure' in a NBD are arbitrary.
     As such, a NBD can also be described as modeling the number
     of successes before a desired number of failures. In this case,
-    the roles of $p$ and $p$ are reversed
+    the roles of $p$ and $q$ are reversed
 \end{itemize}
 
+% Relationship beterrn HD
 
 \subsection{Probability Mass Function Of NBD}
 
@@ -86,7 +87,10 @@ Note:
 \subsection{Relationship between Binomial Distribution (BD) and NBD}
 Consider $ n $ independent Bernoulli trials with the same probability 
 of success $ p $. If $ Y $ is the number of successes, it is said
-to follow a binomial distribution with parameters $ n $ and $ p $.
+to follow a binomial distribution with parameters $ n $ and $ p $
+denoted by:
+
+% TODO NBD mean and variance in R generated not in data set
 
 \begin{gather*}
   Y \sim Bin(n, p)
@@ -140,11 +144,13 @@ Since $ E(X) < Var(X) $, the NBD can be applied. \\
 % \end{gather*}
 
 \textbf{Scenario:} Consider an event
-where A-Level economics students are gathered, the event organiser
-wants an $ r^{th} $ number of students who obtained A* and starts 
-approaching attendees about their grades. Let the random variable
-$ X $ represent the probability that the organiser gathers
-those students after $ n $ number of attempts. \\
+where A-Level economics students are gathered. The event organiser
+wants a group of 5 students who obtained credit and starts 
+approaching attendees about their grades one by one
+. Let the random variable
+$ X $ represent the number of students approached
+who have not got a credit until the organiser
+has achieved his goal.
 
 % From this, the
 % following NBD can be constructed:
