@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz}
+\usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{pgfplots}
 \usepackage{graphicx}
@@ -118,7 +119,7 @@ any predetermined number r of successes.In other words,A GD is a special
 case of NBD where r is equal to 1.
 
 \subsection{Illustration of NBD}
-To illustrate, we will use data from Statistics Mauritius pertaining
+To illustrate, we will use data from MES pertaining
 to grades of student in Economics A Level during the 2023 seating.
 Below is a summary of the data collected, along with mean and 
 variance.
@@ -203,7 +204,8 @@ the exams in 2023, it may not be suitable for any other application
 except for scenarios concerning that batch of students specifically.
 
 
-\subsection{Goodess of fit test for NBD}
+\subsection{Goodness of fit test for NBD}
+The Chi square test will be used.
 
 Based on the sampled data, the mean and variance can be calculated:
 
@@ -213,7 +215,7 @@ Based on the sampled data, the mean and variance can be calculated:
 \end{gather*}
 
 Since mean < variance, the data does satisfy the conditions for
-a NBD.
+a NBD. \\
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -285,6 +287,13 @@ $N-n$ and r denoted by:
   \item Sampling is done without replacement (dependent trials).
 \end{itemize}
 
+\subsection{Relationship between HD and BD}
+A BD is not suitable for the random variable X as the Bernoulli trials
+(where a “success” is represented by Type A) are dependent 
+(since sampling is done without replacement).However if the sample 
+size is small enough (< 5 \% of population size),the BD can be used 
+to provide a reasonable approximation for a HD.
+
 \subsection{Illustration of a HD}
 Here, we will use data from MES concerning the number of students
 who sat for the A-Level exams in 2023 in Rodrigues. The following
@@ -301,11 +310,15 @@ table shows amount of students classified by gender:
   \end{tabular}
 \end{center}
 
+Let a sample of 30 students be taken from the population without
+replacement. Our goal is to calculate the probability of X, which
+represents the number of males in the sample \\
+
 % Let $ X $ be a random variable denoting the number of boys
 % in a sample of 30 students.
 
-After this, the following data was generated using the rhyper
-function in R, called with:
+The data for our distribution was generated using the 
+rhyper function in R as follows:
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
@@ -321,14 +334,7 @@ function in R, called with:
   \includegraphics[scale=0.6]{lecooked2.jpg}
 \end{center}
 
-\subsection{Relationship between HD and BD}
-A BD is not suitable for the random variable X as the Bernoulli trials
-(where a “success” is represented by Type A) are dependent 
-(since sampling is done without replacement).However if the sample 
-size is small enough (< 5 \% of population size),the BD can be used 
-to provide a reasonable approximation for a HD.
-
-\subsection{Goodness of Fit Test for HD}
+\subsection{Goodness of Fit Test for HD (Using The Chi Square Test)}
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
   \hline
@@ -363,4 +369,8 @@ there is statistical evidence that
 the random variable X does 
 follow a hypergeometric distribution.
 
+\section{References}
+MES Data: \url{https://mes.govmu.org/mes/?page_id=4367}
+
 \end{document}
+
