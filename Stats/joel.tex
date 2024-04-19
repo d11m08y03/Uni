@@ -114,11 +114,6 @@ Taking a sample of 50, the rnbinom function in R outputs the following:
   \end{tabular}
 \end{center}
 
-Based on the above, the mean and variance can be calculated:
-\begin{gather*}
-  \mu = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
-  \sigma^2 = \frac{(x_i - \mu)^2}{n - 1} = 5.46
-\end{gather*}
 
 \subsubsection{Bar Chart}
 
@@ -158,5 +153,51 @@ $N-n$ and r denoted by:
   \item Population can be seperated into 2 types
   \item Sampling is done without replacement (dependent trials).
 \end{itemize}
+
+\section{Goodness of Fit}
+
+\subsection{NBD}
+
+Based on the sampled data, the mean and variance can be calculated:
+
+\begin{gather*}
+  \mu = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
+  \sigma^2 = \frac{(x_i - \mu)^2}{n - 1} = 5.46 \\[5pt]
+  \therefore \text{mean < variance}
+\end{gather*}
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    $x$ & $O_i$ & $ E_i $ (4 d.p) & $ (O_i - E_i)^2 / E_i $ (4 d.p) \\
+    \hline 
+    \hline 
+    0  & 4  & 5.106   & 0.2394 \\
+    1  & 10 & 9.3534  & 0.04476 \\
+    2  & 8  & 10.2813 & 0.5062 \\
+    3  & 6  & 8.7898  & 0.8855 \\
+    4  & 8  & 6.4412  & 0.3772 \\
+    5  & 6  & 4.2481  & 0.4124 \\
+    6  & 3  & 2.5942  & 0.0635 \\
+    7  & 4  & 1.4936  & 0.2060 \\
+    8  & 0  & 0.8209  & 0.8209 \\
+    9  & 0  & 0.4345  & 0.4345 \\
+    10 & 0  & 0.2229  & 0.2290 \\
+    11 & 1  & 0.1113  & 0.0689 \\
+    \hline
+    \hline
+       & 50 & 49.8968 & 15.2882  \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{gather*}
+  x^2 = \sum \frac{(O_i - E_i)^2}{E_i} = 15.2882 \\[5pt]
+  x^2_{ll} (0.05) = 19.675 \\[5pt]
+\end{gather*}
+
+Since $ x^2 < x^2_{ll}(0.05) $, assuming a 5\% significane level,
+the random variable $ X $ does in fact follow a negative binomial
+distribution.
 
 \end{document}
