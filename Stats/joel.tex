@@ -4,10 +4,29 @@
 \usepackage{amssymb}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage{tikz}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \usepackage{mathtools}
 \usepackage{pgfplots}
 \usepackage{graphicx}
 \setlength{\parindent}{0pt}
+
+\newcommand{\customheader}{%
+    \ifnum\value{page}=2
+    \else
+      \ifnum\value{page} = 3
+        Negative Binomial Distribution
+      \else
+        \leftmark % Default chapter name
+        \ \textbar\ % Separator
+        \rightmark % Default subchapter name
+      \fi
+    \fi
+}
+% Use the custom header command in the fancy header
+\fancyhead{}
+\fancyhead[C]{\customheader}
+\fancyfoot[C]{\thepage} % Page numbers centered in the footer
 
 \newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
 
@@ -85,7 +104,8 @@ Note:
   \item The experiment must have a finite number of success(es)
 \end{itemize}
 
-\subsection{Relationship between Binomial Distribution (BD) and NBD}
+\subsection{Relationship between NBD and other distributions}
+\subsubsection{Binary Distribution (BD)}
 Consider $ n $ independent Bernoulli trials with the same probability 
 of success $ p $. If $ Y $ is the number of successes, it is said
 to follow a binomial distribution with parameters $ n $ and $ p $
@@ -104,7 +124,7 @@ The BD counts the number of successes in a fixed number of
 trials $ n $ while the NBD counts the number of failures until
 a fixed number of successes $ r $.
 
-\subsection{Relationship between Geometric Distribution (GD) and NBD}
+\subsubsection{Geometric Distribution (GD)}
 Consider a sequence of Bernoulli trials, each with the same probability 
 of success. If Z is the number of failures before the first successful 
 trial,then Z is said to follow a geometric distribution(GD) with parameter 
@@ -126,7 +146,7 @@ Below is a summary of the data collected:
 \begin{center}
   \begin{tabular}{|c|c|c|}
     \hline
-    \textbf{Grade} & \textbf{Point Range} & \textbf{$f_i$} \\ % & \textbf{$x_i$} & \textbf{$ f_i \cdot x_i $} & \textbf{$ (x_i - \mu)^2 $} & \textbf{$ f_i \cdot (x_i - \mu)^2  $}\\
+    \textbf{Grade} & \textbf{Point Range} & \textbf{$f$} \\ % & \textbf{$x_i$} & \textbf{$ f_i \cdot x_i $} & \textbf{$ (x_i - \mu)^2 $} & \textbf{$ f_i \cdot (x_i - \mu)^2  $}\\
     \hline
     \hline
     A* & 129-180	& 75	\\ % & 154.5 & 11587.5	& 5731.441922	& 429858.1441 \\
@@ -192,12 +212,14 @@ data for our distribution:
 
 
 \begin{center}
-  \includegraphics[scale=0.6]{joemama.jpg}
+  \includegraphics[scale=1.0]{joemama.jpg}
 \end{center}
 
 \subsection{Issues with this application}
 Since we have used the rhyper function in R to generate our distribution
 data, it may not reflect actual real life data.
+
+\pagebreak
 
 \subsection{Goodness of fit test for NBD}
 Based on our distribution data, the mean and variance can be calculated:
@@ -340,7 +362,7 @@ rhyper(30, 94, 150, 30) function in R:
 \end{center}
 
 \begin{center}
-  \includegraphics[scale=0.6]{lecooked2.jpg}
+  \includegraphics[scale=1.0]{lecooked2.jpg}
 \end{center}
 
 \subsection{Issues with this application}
@@ -349,7 +371,7 @@ other applications since it only concerns itself with Rodrigues
 year 2023.
 
 \subsection{Goodness of Fit Test for HD}
-The Chi-Square test will be used to test if a HD is suitable for
+The Chi-Square test will be used to determine if a HD is suitable for
 our distribution, allowing a 5\% level of significance.
 
 \begin{center}
