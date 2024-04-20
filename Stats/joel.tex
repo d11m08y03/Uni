@@ -144,7 +144,7 @@ From the above data, we can calculate the probability that
 a random student has obtained a credit:
 
 \begin{gather*}
-  P(credit) = \frac{1703}{2688} = 0.6338
+  P(credit) = \frac{1703}{2688} = 0.6336
 \end{gather*}
 
 Note: a credit is awarded to students who have gotten at least a D.\\
@@ -174,7 +174,8 @@ Note: probability that a student obtains a credit is 0.6336.
 %   X \sim \text{NBin}(3, 0.0279)
 % \end{gather*}
 
-Using the rnbinom function in R we have generated the following
+Using the rnbinom(50, 5, 0.6336) function in R we have generated the
+following
 data for our distribution:
 
 \begin{center}
@@ -195,22 +196,22 @@ data for our distribution:
 \end{center}
 
 \subsection{Issues with this application}
-Since we have used the rnbinom fucntion in R, our
-generated data may not reflect actual real life data.
-
+Since we have used the rhyper function in R to generate our distribution
+data, it may not reflect actual real life data.
 
 \subsection{Goodness of fit test for NBD}
-The Chi square test will be used.
-
-Based on the sampled data, the mean and variance can be calculated:
+Based on our distribution data, the mean and variance can be calculated:
 
 \begin{gather*}
   E(x) = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
   Var(X) = \frac{(x_i - \mu)^2}{n - 1} = 5.46 \\[5pt]
 \end{gather*}
 
-Since mean < variance, the data does satisfy the conditions for
-a NBD. \\
+Since mean < variance, the data does satisfy the over-dispersion 
+assumption of a NBD.\\
+
+The Chi-Square test will be used to determine if our distribution
+follows a NBD allowing a significance level of 5\%.
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -263,11 +264,21 @@ $N-n$ and r denoted by:
 
 \subsection{Probability Mass Function of HD}
 
+  % P(X = n) = {{n + r - 1} \choose {r - 1}} p^r q^n, 
 \begin{gather*}
-  p(k) =  \frac{\Mycomb[n]{k} \cdot \Mycomb[(N-n)]{(r-k)}}
+  P(X=k) =  \frac{\Mycomb[n]{k} \cdot \Mycomb[(N-n)]{(r-k)}}
   {\Mycomb[N]{r}}, \; \;
+  % p(k=k) \frac{{n \choose k} {N-n \choose r-k}} \\[5pt]
   \text{for } max\{ 0, r - (N - n) \} \leq k \leq min\{r, n\}
 \end{gather*}
+
+% \begin{gather*}
+%   P(k) = \frac{
+%     n \choose n
+%   } {
+%     N \choose r
+%   }
+% \end{gather*}
 
 \subsection{Expected Value and Variance of HD}
 \begin{gather*}
@@ -305,6 +316,7 @@ table shows amount of students classified by gender:
   \end{tabular}
 \end{center}
 
+\textbf{Scenario:}
 Let a sample of 30 students be taken from the population without
 replacement. Our goal is to calculate the probability of X, which
 represents the number of males in the sample \\
@@ -313,7 +325,7 @@ represents the number of males in the sample \\
 % in a sample of 30 students.
 
 The data for our distribution was generated using the 
-rhyper function in R as follows:
+rhyper(30, 94, 150, 30) function in R:
 
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
@@ -321,6 +333,8 @@ rhyper function in R as follows:
     x & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 17 \\
     \hline
     f & 1 & 1 & 3 & 6 & 5 & 4 & 4 & 3 & 2 & 1 \\
+    \hline
+    P(X=x) & 0.03 & 0.03 & 0.10 & 0.20 & 0.17 & 0.13 & 0.13 & 0.10 & 0.07 & 0.03 \\
     \hline
   \end{tabular}
 \end{center}
@@ -334,7 +348,10 @@ This particular distribution as well may not be suitable to model
 other applications since it only concerns itself with Rodrigues 
 year 2023.
 
-\subsection{Goodness of Fit Test for HD (Using The Chi Square Test)}
+\subsection{Goodness of Fit Test for HD}
+The Chi-Square test will be used to test if a HD is suitable for
+our distribution, allowing a 5\% level of significance.
+
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
   \hline
