@@ -1,0 +1,181 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\cum}{\mathbb{C}}
+
+\author{Zakariyya Kurmally}
+\title{Tutorial 3}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\section{Vector Spaces}
+A vector space $V$ is a set equipped with 2 operations:
+\begin{itemize}
+  \item Addition: given $ v, w \in V, \; v + w  \in V$
+  \item Scalar Multiplication: given $ v \in V $ and $ c \in \real $,
+    $ c \cdot v \in V $
+\end{itemize}
+
+These 2 operations are required to satisfy the following axioms
+$ \forall \; u, v, w \in V $ and all scalars $ c, d \in \real $:
+\begin{itemize}
+  \item Commutativity of Addition: $ v + w = w + v $
+  \item Associativity of Addition: $ (u + v) + w = u + (v + w) $
+  \item Additive Identity: $ \exists $ a zero element $ \bold{0} 
+    \in V \ni v + \bold{0} = v = \bold{0} + v$
+  \item Additive Inverse: $ \forall \; v \in V, \; \exists \; (-v) \in V
+    \ni v + (-v) = \bold{0} = (-v) + v $
+  \item Distribuvity: $ (c + d) \cdot v = cv + dv $ and $ c \cdot (v + w) = cv + cw $
+  \item Associativity of Scalar Multiplication:
+    $ c \cdot (dv) = (cd) \cdot v $
+  \item Unit for Scalar Multiplication: the scalar $ 1 \in \real $
+    satisfies $ 1 v = v $
+\end{itemize}
+
+\subsection{Subspace}
+A subspace $ W $ of a vector space $ V $ is a subset $ W \subset V $
+and is a vector space on its own.
+
+\section{Inner Products}
+The most basic form of inner products is the inner product:
+\begin{gather*}
+  \langle v; w \rangle = v \cdot w = v_1 w_1 + v_2 w_2 + ... =
+  \sum_{i = 1}^{n} v_i w_i
+\end{gather*}
+
+The Euclidean norm or length of a vector $ v $ is given by:
+\begin{gather*}
+  ||v|| = \sqrt{v \cdot v} = 
+  \sqrt{v_1^2 + v_2^2 + ... + v_n^2}
+\end{gather*}
+
+\textbf{Definition:} An inner product on the vector space $ V $ is
+a pairing that takes two vectors $ v, \; w \in V $ and produces
+$ \langle v; w \rangle \in \real $ which is required to satisfy the 
+following axioms, given $ u, v, w \in V $ and $ c, d, k \in \real $:
+
+\begin{itemize}
+  \item Additivity:
+    \begin{gather*}
+      \langle u + v; w \rangle =
+      \langle u + v \rangle + \langle u + w \rangle
+    \end{gather*}
+  \item Homoneneity:
+    \begin{gather*}
+      \langle ku + v; w \rangle = k \;
+      \langle u + v; w \rangle 
+    \end{gather*}
+  \item Bilinearity:
+    \begin{gather*}
+      \langle c \cdot u + d \cdot v; w \rangle =
+      c \; \langle u ;v \rangle + d \; \langle v; w \rangle
+    \end{gather*}
+  \item Symmetry:
+    \begin{gather*}
+      \langle v; w \rangle = \langle w; v \rangle
+    \end{gather*}
+  \item Positivity:
+    \begin{gather*}
+      \langle v; v \rangle > 0 \text{ whenever } v \neq 0 
+      \text{ while } \langle 0; 0 \rangle = 0
+    \end{gather*}
+\end{itemize}
+
+\section{The Cauchy-Schwarz Inequality}
+Every inner product satisfies the Cauchy-Schwarz inequality:
+\begin{gather*}
+  v \cdot w = ||v|| \; ||w|| \cos \theta \\[5pt]
+  |\cos \theta| \leq 1 \\[5pt]
+  v \cdot w \leq ||v|| \; ||w|| \\[5pt]
+\end{gather*}
+
+\section{Orthogonal Vectors}
+\textbf{Definition:} Two elements $ v, w \in V $ of an inner product 
+space $ V $ are called orthogonal if $ \langle v; w \rangle = 0 $. Note
+that the property of orthogonality depends on which type of inner 
+product is used.
+
+\subsection{Orthogonal Set}
+\textbf{Definition:} A non-empty set in $ \real^n $ is called
+an orthogonal set if all pairs of distinct vectors in the set
+are orthogonal.
+
+\section{The Triangle Inequality}
+Given $ u, v \in V $ and any scalar k $ \in \real $, then
+$ || u + v || \leq ||u|| + ||v|| $.
+
+\section{Parallelogram Equation for Vectors}
+Given $ u, v \in R^n $, then 
+$ ||u + v||^2 + ||u - v||^2 = 2(||u||^2 + ||v||^2)$. 
+
+\section{Norms}
+\textbf{Definition:} A norm on the vector space $ V $ assigns a 
+real number $ ||v|| $ to each vector $ v \in V $ subject to the
+axioms of Positivity, Homogeneity and Triangle Inequality. \\
+
+The 1st norm of a vector $ v = (v_1, v_2, ..., v_n)^T $ is given
+by the sum of the absolute values of its entries:
+\begin{gather*}
+  ||v||_1 = |v_1| + |v_2| + ... + |v_n|
+\end{gather*}
+
+The max or $ \infty $ norm is equal to its maximal entry in 
+absolute values:
+\begin{gather*}
+  ||v||_{\infty} = Sup(|v_1|, |v_2|, ..., |v_n|)
+\end{gather*}
+
+In general, the p-norm is given by:
+\begin{gather*}
+  ||v||_p = \sqrt[p]{
+    \sum_{i = 1}^{n} |v_i|^p
+  }
+\end{gather*}
+
+The triangle inequality for norms:
+\begin{gather*}
+  \sqrt[p]{\sum_{i = 1}^{n} |v_i + w_i|^p} =
+  \sqrt[p]{\sum_{i = 1}^{n} |v_i|^p} +
+  \sqrt[p]{\sum_{i = 1}^{n} |w_i|^p}
+\end{gather*}
+
+\section{Unit Vectors}
+If $ V $ is a fixed normed vector space, the elements $ u \in V $
+with unit norm $ ||u|| = 1 $ are known as unit vectors. If $ v $ is
+any non-zero vector, to obtain a unit vector $ u $ parallel to $ v $:
+\begin{gather*}
+  u = \frac{v}{||v||}
+\end{gather*}
+
+\section{Orthogonal Bases}
+\textbf{Definition:} A basis $ u_1, u_2, ..., u_n $ of $ V $ is called orthogonal if
+$ \langle u_i; u_j \rangle = 0 \; \forall \; i \neq j $. The basis
+is called orthogonormal if each vector has unit length that is
+$ ||u_i|| = 1 \; \forall \; i = 1, 2, ..., n $. \\
+
+If $ v_1, v_2, ..., v_n $ is an orthogonal basis of $ V $, then the
+normalised vectors $ u_i = v_i / ||v_i|| \; \forall \; i = 1, 2,
+..., n$ form an orthogonormal basis of $ V $. \\
+
+If $ v_1, v_2, ..., v_n \in V $ are non-zero and mutually orthogonal
+($ \langle v_i; v_j \rangle = 0 \; \forall \; i \neq j $), then they
+are linearly independent.
+
+\section{Vector Norms}
+\textbf{Definition:} Let $ v: \cum^n \rightarrow \real $. Then $ v $ is
+a vector norm if $ \; \forall \; x, y \in \cum $:
+\begin{itemize}
+  \item Positive definite: $ x \neq 0 \implies v(x) > 0 $
+  \item Homogeneity: $ v(\alpha x) = |\alpha|v(x) $
+  \item Obeys triangle inequality: $ v(x + y) \leq v(x) + v(y) $
+\end{itemize}
+
+\end{document}
