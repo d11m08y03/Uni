@@ -2,8 +2,8 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage{tikz}
-\usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{pgfplots}
 \usepackage{graphicx}
@@ -50,7 +50,7 @@ and $ p $, denoted by:
 
 Note:
 \begin{itemize}
-  \item Mean is always greater than variance for a NBD. This is 
+  \item Variance is always greater than mean for a NBD. This is 
     known as over-dispersion
   \item A random variable D which follows a NBD can also be defined
     as the number of trials until the $ r^{th} $ success. In such a
@@ -98,13 +98,13 @@ denoted by:
   Y \sim Bin(n, p)
 \end{gather*}
 
-Upon comparison, both the BD and NBD are based upon independent 
+Upon comparison, both the BD and NBD are based on independent 
 Bernoulli trials. However, they differ in what they are counting.
 The BD counts the number of successes in a fixed number of 
 trials $ n $ while the NBD counts the number of failures until
 a fixed number of successes $ r $.
 
-\subsection{Relationship between Geometric Distribution (BD) and NBD}
+\subsection{Relationship between Geometric Distribution (GD) and NBD}
 Consider a sequence of Bernoulli trials, each with the same probability 
 of success. If Z is the number of failures before the first successful 
 trial,then Z is said to follow a geometric distribution(GD) with parameter 
@@ -121,8 +121,7 @@ case of NBD where r is equal to 1.
 \subsection{Illustration of NBD}
 To illustrate, we will use data from MES pertaining
 to grades of student in Economics A Level during the 2023 seating.
-Below is a summary of the data collected, along with mean and 
-variance.
+Below is a summary of the data collected:
 
 \begin{center}
   \begin{tabular}{|c|c|c|}
@@ -148,8 +147,7 @@ a random student has obtained a credit:
   P(credit) = \frac{1703}{2688} = 0.6338
 \end{gather*}
 
-Since $ E(X) < Var(X) $, the NBD can be applied. \\
-
+Note: a credit is awarded to students who have gotten at least a D.\\
 % TODO
 % prop credit
 % r = 5
@@ -160,14 +158,11 @@ Since $ E(X) < Var(X) $, the NBD can be applied. \\
 %   \sigma = \frac{1}{\sum f_i} \cdot \sum {f_i \cdot (x_i - \mu)^2} = 915.09
 % \end{gather*}
 
-\textbf{Scenario:} Consider an event
-where A-Level economics students are gathered. The event organiser
-wants a group of 5 students who obtained a credit and starts 
-approaching the attendees about their grades one by one
-. Let the random variable
-$ X $ represent the number of students approached
-who have not got a credit until the organiser
-is able to achieve his goal.  \\
+Let 'success' be a student who was awarded a credit in A-Level Economics,
+and 'failure' be a student who was not able to get a credit. \\
+
+Our goal is to calculate the probability of $X$ which is a random variable
+representing the number of failures until we obtain 5 success. \\
 
 Note: probability that a student obtains a credit is 0.6336.
 \\
@@ -189,6 +184,8 @@ data for our distribution:
     \hline
     f & 4 & 10 & 8 & 6 & 8 & 6 & 3 & 4 & 0 & 0 & 0 & 1\\
     \hline
+    P(X=x) & 0.08 & 0.20 & 0.16 & 0.12 & 0.16 & 0.12 & 0.06 & 0.08 & 0 & 0 & 0 & 0.02 \\
+    \hline
   \end{tabular}
 \end{center}
 
@@ -197,11 +194,9 @@ data for our distribution:
   \includegraphics[scale=0.6]{joemama.jpg}
 \end{center}
 
-\subsubsection{Issues with this application}
-% only suitable for 2023
-Since the data set originally pertains to students sitting for
-the exams in 2023, it may not be suitable for any other application
-except for scenarios concerning that batch of students specifically.
+\subsection{Issues with this application}
+Since we have used the rnbinom fucntion in R, our
+generated data may not reflect actual real life data.
 
 
 \subsection{Goodness of fit test for NBD}
@@ -210,8 +205,8 @@ The Chi square test will be used.
 Based on the sampled data, the mean and variance can be calculated:
 
 \begin{gather*}
-  \mu = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
-  \sigma^2 = \frac{(x_i - \mu)^2}{n - 1} = 5.46 \\[5pt]
+  E(x) = \frac{\sum x \cdot f}{\sum f} = \frac{163}{50} = 3.26 \\[5pt]
+  Var(X) = \frac{(x_i - \mu)^2}{n - 1} = 5.46 \\[5pt]
 \end{gather*}
 
 Since mean < variance, the data does satisfy the conditions for
@@ -334,6 +329,11 @@ rhyper function in R as follows:
   \includegraphics[scale=0.6]{lecooked2.jpg}
 \end{center}
 
+\subsection{Issues with this application}
+This particular distribution as well may not be suitable to model
+other applications since it only concerns itself with Rodrigues 
+year 2023.
+
 \subsection{Goodness of Fit Test for HD (Using The Chi Square Test)}
 \begin{center}
   \begin{tabular}{|c|c|c|c|}
@@ -368,9 +368,6 @@ assuming a 5\% significance level,
 there is statistical evidence that
 the random variable X does 
 follow a hypergeometric distribution.
-
-\section{References}
-MES Data: \url{https://mes.govmu.org/mes/?page_id=4367}
 
 \end{document}
 
